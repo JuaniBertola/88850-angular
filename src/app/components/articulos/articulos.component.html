@@ -199,17 +199,23 @@
 
   <!-- Botones Grabar, Cancelar/Volver' -->
   <div class="row justify-content-center">
-    <button type="button" class="btn btn-primary" (click)="Grabar()">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="Grabar()"
+      *ngIf="AccionABMC == 'A' || AccionABMC == 'M'"
+    >
       <i class="fa fa-check"></i> Grabar
     </button>
     &nbsp;
     <button type="button" class="btn btn-warning" (click)="Volver()">
-      <i class="fa fa-undo"></i> Volver/Cancelar
+      <i class="fa fa-undo"></i>
+      {{ AccionABMC == 'A' || AccionABMC == 'M' ? 'Cancelar' : 'Volver' }}
     </button>
   </div>
 
   <!--texto: Revisar los datos ingresados...-->
-  <div id="divMsjFormRegistro" class="row alert alert-danger">
+  <div id="divMsjFormRegistro" class="row alert alert-danger" *ngIf="false">
     <i class="fa fa-exclamation-sign"></i>{{ Mensajes['RD'] }}
   </div>
 </form>
