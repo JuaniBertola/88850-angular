@@ -104,8 +104,43 @@ export class ArticulosComponent implements OnInit {
  
   // grabar tanto altas como modificaciones
   Grabar() {
-    alert("Registro Grabado!");
-    this.Volver();
+
+    const itemCopy: Articulo = {
+      IdArticulo: this.FormRegistro.value.IdArticulo!,
+      Nombre: this.FormRegistro.value.Nombre!,
+      Precio: this.FormRegistro.value.Precio!,
+      Stock: this.FormRegistro.value.Stock!,
+      CodigoDeBarra: this.FormRegistro.value.CodigoDeBarra!,
+      IdArticuloFamilia: this.FormRegistro.value.IdArticuloFamilia!,
+      FechaAlta: this.FormRegistro.value.FechaAlta! || ' ',
+      Activo: this.FormRegistro.value.Activo!,
+    };
+
+    var arrFecha = itemCopy.FechaAlta.substring(0, 10).split('/');
+    if (arrFecha.length == 3)
+      itemCopy.FechaAlta = new Date(
+        parseInt(arrFecha[2]),
+        parseInt(arrFecha[1]) - 1,
+        parseInt(arrFecha[0])
+      ).toISOString();
+
+    // agregar post
+    if (this.AccionABMC == 'A') {
+      this.articulosService.post(itemCopy).subscribe((res: any) => {
+        this.Volver();
+        alert('Registro agregado correctamente.');
+        this.Buscar();
+      });
+    } else {
+      // modificar put
+      this.articulosService
+        .put(itemCopy.IdArticulo, itemCopy)
+        .subscribe((res: any) => {
+          this.Volver();
+          alert('Registro modificado correctamente.');
+          this.Buscar();
+        });
+    }
   }
  
   ActivarDesactivar(Item : Articulo) {
