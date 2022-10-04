@@ -7,10 +7,12 @@ import {APP_BASE_HREF} from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
-import { InicioComponent } from './inicio/inicio.component';
-import { ArticulosFamiliasComponent } from './articulos-familias/articulos-familias.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MenuComponent } from './menu/menu.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { ArticulosFamiliasComponent } from './components/articulos-familias/articulos-familias.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { ArticulosComponent } from './components/articulos/articulos.component';
+
 
 
 @NgModule({
@@ -20,9 +22,10 @@ import { MenuComponent } from './menu/menu.component';
     RouterModule.forRoot([
     { path: '', redirectTo: '/inicio', pathMatch: 'full' },
     { path: 'inicio', component: InicioComponent },
-    { path: 'articulosfamilias', component: ArticulosFamiliasComponent }
+    { path: 'articulosfamilias', component: ArticulosFamiliasComponent },
+    { path: 'articulos', component: ArticulosComponent }
   ]) ],
-  declarations: [ AppComponent, HelloComponent, InicioComponent, ArticulosFamiliasComponent, MenuComponent ],
+  declarations: [ AppComponent, HelloComponent, InicioComponent, ArticulosFamiliasComponent, MenuComponent, ArticulosComponent ],
   providers: [  { provide: APP_BASE_HREF, useValue: "/" } ],
   bootstrap:    [ AppComponent ]
 })
