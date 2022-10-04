@@ -184,7 +184,7 @@ export class ArticulosComponent implements OnInit {
     Precio: new FormControl(null),
     Stock: new FormControl(null),
     CodigoDeBarra: new FormControl (''),
-    IdArticuloFamilia: new FormControl(''),
+    IdArticuloFamilia: new FormControl(null),
     FechaAlta: new FormControl(''),
     Activo: new FormControl(true),
   });
