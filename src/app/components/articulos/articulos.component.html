@@ -17,7 +17,7 @@
     <label class="col-form-label col-sm-2 offset-sm-1"> Activo: </label>
     <div class="col-sm-3">
       <select class="form-control" name="Activo">
-        <option *ngFor="let opt of OpcionesActivo">‌{{ opt.Nombre }}</option>
+        <option *ngFor="let opt of OpcionesActivo" [ngValue]="opt.Id"></option>
       </select>
     </div>
   </div>
@@ -51,6 +51,7 @@
         <th class="text-center">Fecha de Alta</th>
         <th class="text-center">Activo</th>
         <th class="text-center text-nowrap">Acciones</th>
+        <th class="text-center">Familia</th>
       </tr>
     </thead>
     <tbody>
@@ -88,6 +89,7 @@
             <i class="fa fa-{{ item.Activo ? 'times' : 'check' }}"></i>
           </button>
         </td>
+        <td>{{ GetArticuloFamiliaNombre(item.IdArticuloFamilia) }}</td>
       </tr>
     </tbody>
   </table>
